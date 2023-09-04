@@ -1,13 +1,8 @@
--- This Lua script kicks the local player when anyone joins the game.
-
 local Players = game:GetService("Players")
 
--- Global constant for the owner's username
 local OWNER_USERNAME = "YourUsernameHere"
 
--- Function to kick the owner
 local function kickOwner()
-    -- Kick the local player
     local localPlayer = Players.LocalPlayer
     
     if localPlayer and localPlayer.Name == OWNER_USERNAME then
@@ -15,14 +10,10 @@ local function kickOwner()
     end
 end
 
--- Function to handle player joining
 local function onPlayerJoin(player)
-    -- Check if the player joining is not the owner
     if player.Name ~= OWNER_USERNAME then
-        -- Kick the owner
         kickOwner()
     end
 end
 
--- Connect the onPlayerJoin function to the PlayerAdded event
 Players.PlayerAdded:Connect(onPlayerJoin)
